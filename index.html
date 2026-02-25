@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retro Teliks</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+<body>
+  <div class="tv">
+    <div class="tv-frame">
+      <!-- Use a REAL <img> so <map> works (image maps do not work on CSS backgrounds). -->
+      <img id="tv-image" class="tv-image" src="tv.png" usemap="#tvmap" alt="TV" />
+
+      <!-- Clickable hotspots (EDIT coords to match your tv.png button positions).
+           coords are in pixels relative to the image's NATURAL size.
+           JS will auto-scale them when the image is resized on screen. -->
+      
+<map name="tvmap" id="tvmap">
+  <!-- POWER (oval button under “Power”) -->
+  <area shape="rect"
+        coords="420,550,460,515"
+        href="#"
+        aria-label="Power"
+        title="Power"
+        data-action="power" />
+
+  <!-- CH ▲ (Channel up / next) -->
+  <area shape="rect"
+        coords="630,535,700,510"
+        href="#"
+        aria-label="Channel up"
+        title="Channel up"
+        data-action="next" />
+
+  <!-- CH ▼ (Channel down / previous) -->
+  <area shape="rect"
+        coords="535,535,610,510"
+        href="#"
+        aria-label="Channel down"
+        title="Channel down"
+        data-action="prev" />
+
+  <!-- VOL + (Volume up) — tune coords to match tv.png -->
+  <area shape="rect"
+        coords="720,535,800,510"
+        href="#"
+        aria-label="Volume up"
+        title="Volume up"
+        data-action="vol-up" />
+
+  <!-- VOL - (Volume down) — tune coords to match tv.png -->
+  <area shape="rect"
+        coords="720,560,800,535"
+        href="#"
+        aria-label="Volume down"
+        title="Volume down"
+        data-action="vol-down" />
+</map>
+
+
+      <!-- Screen overlay stays on top of the TV image -->
+      <div class="tv-screen" aria-live="polite">
+        <div class="osd" aria-hidden="true"></div>
+        <!-- static noise <video> and yt wrapper are injected by main.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
